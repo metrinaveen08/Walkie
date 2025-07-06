@@ -248,7 +248,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Metri Naveen Kumar** - *Initial work* - [YourGitHub](https://github.com/metrinaveen08)
+- **Metri Naveen Kumar** - *Initial work* - [GitHub](https://github.com/metrinaveen08)
 
 ## 🙏 Acknowledgments
 
