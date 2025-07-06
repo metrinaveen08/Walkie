@@ -1,0 +1,106 @@
+# Simulation Configuration for Agile Dynamic Robot
+
+# Control System Parameters (same as hardware but with adjusted frequencies)
+control:
+  control_frequency: 50.0  # Hz (lower for simulation)
+  safety_check_frequency: 100.0  # Hz
+  state_estimation_frequency: 50.0  # Hz
+  planning_frequency: 5.0  # Hz
+  max_linear_velocity: 3.0  # m/s (higher for simulation testing)
+  max_angular_velocity: 4.0  # rad/s
+  emergency_stop_acceleration: -8.0  # m/s^2
+
+# Simulation-specific Hardware Configuration
+hardware:
+  type: "differential_drive"
+  wheel_base: 0.3  # meters
+  wheel_radius: 0.05  # meters
+  max_wheel_velocity: 15.0  # rad/s (higher for sim)
+  simulation_noise: 0.02  # Add noise to simulate real-world conditions
+
+# Simulated Sensors
+sensors:
+  imu:
+    type: "imu"
+    sample_rate: 100  # Hz
+    noise_level: 0.01  # Gaussian noise standard deviation
+    bias_drift: 0.001  # Bias drift per second
+  
+  odometry:
+    type: "odometry"
+    wheel_diameter: 0.1  # meters
+    wheel_base: 0.3  # meters
+    encoder_resolution: 1024  # ticks/revolution
+    slip_factor: 0.02  # Wheel slip simulation
+
+# Simulation Vision Configuration
+vision:
+  camera_id: -1  # Use simulation camera
+  frame_width: 640
+  frame_height: 480
+  fps: 30
+  enable_object_detection: true
+  enable_visual_odometry: true
+  enable_obstacle_detection: true
+  simulation_objects: 10  # Number of random objects to generate
+
+# Physics Simulation
+physics:
+  timestep: 0.01  # seconds
+  gravity: -9.81  # m/s^2
+  friction_coefficient: 0.8
+  air_resistance: 0.01
+  max_simulation_speed: 2.0  # Real-time multiplier
+
+# Environment Configuration
+environment:
+  workspace_size: [10.0, 10.0, 2.0]  # x, y, z dimensions in meters
+  obstacle_density: 0.1  # Fraction of space occupied by obstacles
+  dynamic_obstacles: 3  # Number of moving obstacles
+  wall_thickness: 0.1  # meters
+
+# Scenario Configuration
+scenario:
+  name: "obstacle_course"
+  start_position: [-4.0, -4.0, 0.0]
+  goal_position: [4.0, 4.0, 0.0]
+  max_episode_time: 300.0  # seconds
+  success_tolerance: 0.2  # meters
+
+# Path Planning (more aggressive for simulation)
+planning:
+  planning_horizon: 8.0  # seconds
+  replanning_threshold: 0.3  # meters
+  goal_tolerance: 0.15  # meters
+  max_velocity: 2.5  # m/s
+  max_acceleration: 3.0  # m/s^2
+  planning_frequency: 5.0  # Hz
+  
+  # RRT* Parameters
+  rrt_max_iterations: 2000
+  rrt_step_size: 0.15  # meters
+  rrt_goal_bias: 0.15  # probability
+  rrt_neighbor_radius: 0.4  # meters
+
+# Safety (relaxed for simulation)
+safety:
+  max_consecutive_violations: 10
+  limits:
+    max_linear_velocity: 3.0  # m/s
+    max_angular_velocity: 4.0  # rad/s
+    max_acceleration: 8.0  # m/s^2
+    max_angular_acceleration: 15.0  # rad/s^2
+    workspace_limits: [-5.0, 5.0, -5.0, 5.0, 0.0, 2.0]
+    min_obstacle_distance: 0.2  # meters
+    max_roll: 0.785  # radians (45 degrees)
+    max_pitch: 0.785  # radians (45 degrees)
+    min_battery_voltage: 10.0  # volts
+    critical_battery_voltage: 9.0  # volts
+    max_motor_temperature: 100.0  # Celsius
+    max_controller_temperature: 85.0  # Celsius
+
+# Logging
+logging:
+  level: "DEBUG"
+  console: true
+  file: "logs/simulation.log"

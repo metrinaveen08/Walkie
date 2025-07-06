@@ -1,0 +1,25 @@
+[flake8]
+max-line-length = 88
+extend-ignore = 
+    # F-string formatting in logging (we'll fix these gradually)
+    G001, G002, G003, G004,
+    # Import errors (handled by mypy)
+    F401, F811,
+    # Too general exception (we'll fix these gradually)
+    B902,
+    # Line too long (handled by black)
+    E501,
+    # Whitespace issues (handled by black)
+    W503, W504, E203
+exclude = 
+    .git,
+    __pycache__,
+    .venv,
+    build,
+    dist,
+    *.egg-info
+per-file-ignores =
+    # Test files can have more relaxed rules
+    tests/*:F401,F811,S101
+    # Init files can import unused
+    __init__.py:F401

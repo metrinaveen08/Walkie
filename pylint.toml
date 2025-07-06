@@ -1,0 +1,33 @@
+[tool.pylint]
+# Pylint configuration for robotics project
+
+[tool.pylint.messages_control]
+# Disable problematic or irrelevant checks
+disable = [
+    "missing-docstring",           # We have docstrings where needed
+    "too-few-public-methods",      # Common in interfaces and data classes
+    "too-many-arguments",          # Robotics functions often need many parameters
+    "too-many-instance-attributes", # Robotics classes have many state variables
+    "too-many-locals",             # Complex algorithms need many variables
+    "too-many-branches",           # Safety checks create many branches
+    "broad-exception-caught",      # Robotics needs robust error handling
+    "no-else-return",             # Sometimes more readable
+    "unused-variable",            # Temporary variables during development
+    "unused-argument",            # Interface compliance
+    "too-many-positional-arguments", # Constructor complexity
+    "fixme",                      # TODOs are part of development
+    "import-outside-toplevel",    # Sometimes needed for performance
+]
+
+[tool.pylint.typecheck]
+# Ignore OpenCV dynamic attributes
+ignored-modules = ["cv2"]
+ignored-classes = ["cv2"]
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pylint.design]
+max-attributes = 15
+max-locals = 20
+max-branches = 15

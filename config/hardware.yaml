@@ -1,0 +1,98 @@
+# Robot Control System Configuration
+
+# Control System Parameters
+control:
+  control_frequency: 100.0  # Hz
+  safety_check_frequency: 200.0  # Hz
+  state_estimation_frequency: 100.0  # Hz
+  planning_frequency: 10.0  # Hz
+  max_linear_velocity: 2.0  # m/s
+  max_angular_velocity: 3.14  # rad/s
+  emergency_stop_acceleration: -5.0  # m/s^2
+
+# Trajectory Controller Parameters
+trajectory:
+  kp_linear: 2.0
+  ki_linear: 0.1
+  kd_linear: 0.5
+  kp_angular: 3.0
+  ki_angular: 0.1
+  kd_angular: 0.3
+  max_linear_velocity: 2.0  # m/s
+  max_angular_velocity: 3.14  # rad/s
+
+# Hardware Configuration
+hardware:
+  type: "differential_drive"
+  wheel_base: 0.3  # meters
+  wheel_radius: 0.05  # meters
+  max_wheel_velocity: 10.0  # rad/s
+  left_motor_port: "/dev/ttyUSB0"
+  right_motor_port: "/dev/ttyUSB1"
+
+# Sensor Configuration
+sensors:
+  imu:
+    type: "imu"
+    device_path: "/dev/imu0"
+    sample_rate: 100  # Hz
+    calibration:
+      accel_bias: [0.0, 0.0, 0.0]
+      gyro_bias: [0.0, 0.0, 0.0]
+      mag_bias: [0.0, 0.0, 0.0]
+  
+  odometry:
+    type: "odometry"
+    wheel_diameter: 0.1  # meters
+    wheel_base: 0.3  # meters
+    encoder_resolution: 1024  # ticks/revolution
+
+# Computer Vision Configuration
+vision:
+  camera_id: 0
+  frame_width: 640
+  frame_height: 480
+  fps: 30
+  enable_object_detection: true
+  enable_visual_odometry: true
+  enable_obstacle_detection: true
+
+# Path Planning Configuration
+planning:
+  planning_horizon: 5.0  # seconds
+  replanning_threshold: 0.5  # meters
+  goal_tolerance: 0.1  # meters
+  max_velocity: 1.0  # m/s
+  max_acceleration: 2.0  # m/s^2
+  planning_frequency: 10.0  # Hz
+  
+  # RRT* Parameters
+  rrt_max_iterations: 1000
+  rrt_step_size: 0.2  # meters
+  rrt_goal_bias: 0.1  # probability
+  rrt_neighbor_radius: 0.5  # meters
+
+# Safety Configuration
+safety:
+  max_consecutive_violations: 5
+  limits:
+    max_linear_velocity: 2.0  # m/s
+    max_angular_velocity: 3.14  # rad/s
+    max_acceleration: 5.0  # m/s^2
+    max_angular_acceleration: 10.0  # rad/s^2
+    workspace_limits: [-5.0, 5.0, -5.0, 5.0, 0.0, 2.0]  # x_min, x_max, y_min, y_max, z_min, z_max
+    min_obstacle_distance: 0.3  # meters
+    max_roll: 0.524  # radians (30 degrees)
+    max_pitch: 0.524  # radians (30 degrees)
+    min_battery_voltage: 11.0  # volts
+    critical_battery_voltage: 10.5  # volts
+    max_motor_temperature: 80.0  # Celsius
+    max_controller_temperature: 70.0  # Celsius
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  console: true
+  file: "logs/robot.log"
+  max_file_size: "10MB"
+  backup_count: 5
