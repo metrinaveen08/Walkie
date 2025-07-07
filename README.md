@@ -248,7 +248,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
+- **Metri Naveen Kumar** - *Initial work* - [GitHub](https://github.com/metrinaveen08)
 
 ## 🙏 Acknowledgments
 
@@ -258,12 +258,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/walkie/issues)
+- **Issues**: [GitHub Issues](https://github.com/metrinaveen08/walkie/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/walkie/discussions)
-- **Email**: your.email@example.com
+- **Email**: metrinaveen404@gmail.com
 
 ---
 
-**Made with ❤️ for the robotics community**
-
-*Walkie - Where robots come to life* 🤖✨
+**Made for me to learn more**
