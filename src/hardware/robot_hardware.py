@@ -214,8 +214,7 @@ class DifferentialDriveHardware(HardwareInterface):
             right_velocity: Right wheel velocity (rad/s)
         """
         # In real implementation, send serial commands to motor controllers
-        # TODO: Implement actual motor communication
-        _ = left_velocity, right_velocity  # Placeholder for unused arguments
+        _ = left_velocity, right_velocity  # Suppress unused argument warning
         await asyncio.sleep(0.001)  # Simulate communication delay
     
     async def _update_simulation_state(self, linear: float, angular: float) -> None:

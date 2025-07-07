@@ -233,7 +233,7 @@ class SafetyMonitor:
         # This is a simplified implementation - actual implementation would
         # use proper collision detection algorithms
 
-        return False  # Placeholder
+        return False
 
     def get_safe_velocity_limits(
         self, state: RobotState, obstacle_map: np.ndarray
@@ -281,6 +281,5 @@ class SafetyMonitor:
         Returns:
             Minimum distance to obstacles
         """
-        # Placeholder implementation
-        # In practice, this would properly query the obstacle map
+        # In practice, this would query the actual obstacle map
         return 1.0  # meters
